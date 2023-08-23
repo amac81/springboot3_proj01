@@ -1,4 +1,4 @@
-# Java Fx and JDBC Project
+# Java Spring Boot 3 Project 1
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/amac81/springboot3_proj01/blob/master/LICENSE)
 
 # About the project

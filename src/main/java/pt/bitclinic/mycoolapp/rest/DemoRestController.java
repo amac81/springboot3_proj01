@@ -1,7 +1,9 @@
 package pt.bitclinic.mycoolapp.rest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import pt.bitclinic.mycoolapp.model.Coach;
 
 /*
@@ -21,6 +23,9 @@ import pt.bitclinic.mycoolapp.model.Coach;
 public class DemoRestController {
 
 	// define a private field for the dependency
+	
+	//Field Injection: not recommended by spring.io development team. Makes the code harder to unit test
+	//@Autowired   
 	private Coach myCoach;
 
 	//Construction Injection
@@ -28,15 +33,15 @@ public class DemoRestController {
 	// define a constructor for dependency injection
 
 	// @Autowired // if we just have a constructor @Autowired it's optional
-	/*public DemoRestController(Coach theCoach) {
-		myCoach = theCoach;
-	}*/
-
-	// Setter Injection!
-	@Autowired
-	public void setCoach(Coach theCoach) { //method name could be anything
+	public DemoRestController(@Qualifier("cricketCoach") Coach theCoach) {
 		myCoach = theCoach;
 	}
+
+	// Setter Injection!
+	/*@Autowired
+	public void setCoach(@Qualifier("baseballCoach") Coach theCoach) { //method name could be anything
+		myCoach = theCoach;
+	}*/
 
 	@GetMapping("/dailyworkout")
 	public String dailyWorkout() {

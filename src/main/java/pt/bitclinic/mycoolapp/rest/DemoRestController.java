@@ -28,21 +28,20 @@ public class DemoRestController {
 	// code harder to unit test
 	// @Autowired
 	private Coach myCoach;
-	private Coach anotherCoach;
-
+	
 	// Construction Injection
 
 	// define a constructor for dependency injection
 
 	// @Autowired // if we just have a constructor @Autowired it's optional
 
-	public DemoRestController(@Qualifier("cricketCoach") Coach theCoach, 
-							  @Qualifier("cricketCoach") Coach theAnotherCoach) {
+	public DemoRestController(@Qualifier("cricketCoach") Coach theCoach) {
 		System.out.println("In constructor " + getClass().getSimpleName());
 		myCoach = theCoach;
-		anotherCoach = theAnotherCoach;
 	}
-
+	
+	
+	
 	// @Autowired // if we just have a constructor @Autowired it's optional
 
 	/*
@@ -63,11 +62,6 @@ public class DemoRestController {
 	@GetMapping("/dailyworkout")
 	public String dailyWorkout() {
 		return myCoach.getDailyWorkout();
-	}
-	
-	@GetMapping("/check")
-	public String check() {
-		return "Comparing beans: myCoach = anotherCoach, " + (myCoach == anotherCoach);
 	}
 
 }

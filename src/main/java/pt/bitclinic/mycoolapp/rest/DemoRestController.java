@@ -1,9 +1,9 @@
-package pt.bitclinic.pt.mycoolapp.rest;
+package pt.bitclinic.mycoolapp.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pt.bitclinic.pt.mycoolapp.model.Coach;
+import pt.bitclinic.util.Coach;
 
 @RestController
 public class DemoRestController {

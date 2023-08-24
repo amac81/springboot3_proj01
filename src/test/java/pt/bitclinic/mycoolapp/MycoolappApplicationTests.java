@@ -1,4 +1,4 @@
-package pt.bitclinic.pt.mycoolapp;
+package pt.bitclinic.mycoolapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

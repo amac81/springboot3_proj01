@@ -1,4 +1,4 @@
-package pt.bitclinic.pt.mycoolapp.model;
+package pt.bitclinic.util;
 
 import org.springframework.stereotype.Component;
 

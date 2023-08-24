@@ -1,4 +1,4 @@
-package pt.bitclinic.util;
+package pt.bitclinic.mycoolapp.model;
 
 public interface Coach {
 	public String getDailyWorkout();

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(
 		scanBasePackages = {"pt.bitclinic.mycoolapp", "pt.bitclinic.util"}
 )
+
 public class MycoolappApplication {
 
 	public static void main(String[] args) {

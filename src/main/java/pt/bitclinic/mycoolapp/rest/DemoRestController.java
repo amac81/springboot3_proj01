@@ -1,5 +1,5 @@
 package pt.bitclinic.mycoolapp.rest;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,29 +23,51 @@ import pt.bitclinic.mycoolapp.model.Coach;
 public class DemoRestController {
 
 	// define a private field for the dependency
-	
-	//Field Injection: not recommended by spring.io development team. Makes the code harder to unit test
-	//@Autowired   
-	private Coach myCoach;
 
-	//Construction Injection
+	// Field Injection: not recommended by spring.io development team. Makes the
+	// code harder to unit test
+	// @Autowired
+	private Coach myCoach;
+	private Coach anotherCoach;
+
+	// Construction Injection
 
 	// define a constructor for dependency injection
 
 	// @Autowired // if we just have a constructor @Autowired it's optional
-	public DemoRestController(@Qualifier("cricketCoach") Coach theCoach) {
+
+	public DemoRestController(@Qualifier("cricketCoach") Coach theCoach, 
+							  @Qualifier("cricketCoach") Coach theAnotherCoach) {
+		System.out.println("In constructor " + getClass().getSimpleName());
 		myCoach = theCoach;
+		anotherCoach = theAnotherCoach;
 	}
 
+	// @Autowired // if we just have a constructor @Autowired it's optional
+
+	/*
+	 * Class GenericCoach will be used (it has the annotation @Primary)
+	 * Warning: @Qualifier has higher priority... even though there is a class with
+	 * the @Primary annotation if we use @Qualifier it will have priority in general
+	 * the use of @Qualifier is advisable instead of @Primary
+	 * 
+	 * public DemoRestController(Coach theCoach) { myCoach = theCoach; }
+	 */
+
 	// Setter Injection!
-	/*@Autowired
-	public void setCoach(@Qualifier("baseballCoach") Coach theCoach) { //method name could be anything
-		myCoach = theCoach;
-	}*/
+	/*
+	 * @Autowired public void setCoach(@Qualifier("baseballCoach") Coach theCoach) {
+	 * //method name could be anything myCoach = theCoach; }
+	 */
 
 	@GetMapping("/dailyworkout")
 	public String dailyWorkout() {
 		return myCoach.getDailyWorkout();
+	}
+	
+	@GetMapping("/check")
+	public String check() {
+		return "Comparing beans: myCoach = anotherCoach, " + (myCoach == anotherCoach);
 	}
 
 }

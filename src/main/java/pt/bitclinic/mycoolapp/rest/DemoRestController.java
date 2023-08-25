@@ -35,7 +35,7 @@ public class DemoRestController {
 
 	// @Autowired // if we just have a constructor @Autowired it's optional
 
-	public DemoRestController(@Qualifier("cricketCoach") Coach theCoach) {
+	public DemoRestController(@Qualifier("aquatic") Coach theCoach) {
 		System.out.println("In constructor " + getClass().getSimpleName());
 		myCoach = theCoach;
 	}
